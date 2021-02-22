@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover">
+                <tbody>
+                    <tr>
+                        <th>
+                            Process Name
+                        </th>
+                        <th>
+                            Process Id
+                        </th>
+                        <th>
+                            Memory Usage
+                        </th>
+                        <th>
+                            Owner Name
+                        </th>
+                        <th>
+                            Threads Amount
+                        </th>
+                        <th>
+                            Priority Level
+                        </th>
+                    </tr>
+
+
+                </tbody>
+                @foreach (var b in ViewBag.Proc)
+                {
+                    if (b != null)
+                    {
+                        <tr>
+                            <td>
+                                <p>@b.Name</p>
+                            </td>
+                            <td>
+                                <p>@b.Id</p>
+                            </td>
+                            <td>
+                                <p>@b.Memory</p>
+                            </td>
+                            <td>
+                                <p>@b.UserName</p>
+                            </td>
+                            <td>
+                                <p>@b.Threads</p>
+                            </td>
+                            <td>
+                                <p>@b.Priority</p>
+                            </td>
+                        </tr>
+                        foreach (var thread in b.ThreadsInfo)
+                        {
+
+
+                            <tr>
+                                <td>
+                                    <p>@thread.Id</p>
+                                </td>
+                                <td>
+                                    <p>@thread.Priority</p>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</body>
+</html>
